@@ -1,0 +1,79 @@
+<!-- Complete project details: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+      
+      
+    <title>Czuprin CSM Einstellung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <h1>CSM V3.2</h1>
+       
+    </div>
+   
+
+    <div  class="content">
+        <div id = "id1">
+        <div class="card-grid">
+            <div class="card">
+                
+                <p class="state">Verst&auml;rkungsfaktor: 
+                    <span id="o_label.o_label[4].text"></span></p>
+
+            </div>
+            <div class="card">
+                <p class="card-title"> Fader 2</p>
+                <p class="switch">
+                    
+                </p>
+                <p class="state">Brightness: <span id="sliderValue2"></span> &percnt;</p>
+            </div>
+            <div class="card">
+                <p class="card-title"> Fader 3</p>
+                <p class="switch">
+                    <input type="range" onchange="updateSliderPWM(this)" id="slider3" min="0" max="1" step="1" value ="0" class="schalter">
+                </p>
+                <p class="state">Laden: <span id="sliderValue3"></span></p>
+            </div>
+            <div class="card">
+                <p class="card-title"> Herunterladen</p>
+                <p class="switch">
+                    
+                    
+                   <br>
+                    
+                </p>
+                
+            </div>
+            
+            
+        </div>
+    </div>
+    </div>
+    <script src="./test.js"></script>
+    <script src="./b.js"></script>
+    <style>.button1 {
+        background-color: 4CAF50; 
+        color: white; 
+        border: 2px solid #081108;
+      }
+      
+      .button1:hover {
+        background-color: #83c285;
+        color: black;
+        
+      }</style>
+
+    <button class="button button1" onclick="knopf_getruckt(1)(1)" > Green</button>
+    
+    <button class="button"  onclick="knopf_getruckt(2)(1)">Blue</button>
+    <input type="button" onclick="read(1)" value="Download"/>
+</body>
+</html>

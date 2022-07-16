@@ -1,0 +1,58 @@
+<!-- Complete project details: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP IOT DASHBOARD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <h1>CSM V3.2</h1>
+    </div>
+    <div class="content">
+        <div class="card-grid">
+            <div class="card">
+                <p class="card-title">Verst&auml;rkungsfaktor1</p>
+                
+                    <select  id="slider1" onchange="updateSliderPWM(this)" value ="1" >
+                        <option value="Bitte Einstellen">Bitte Einstellen</option>
+                        <option value="1">1x</option>
+                        <option value="10">10x</option>
+                        <option value="100">100x</option>
+                        <option value="1000">1000x</option>
+                    </select>
+                
+                <p class="state">Brightness: <span id="sliderValue1"></span> &percnt;</p>
+            </div>
+            <div class="card">
+                <p class="card-title"> Fader 2</p>
+                <p class="switch">
+                    <input type="range" onchange="updateSliderPWM(this)" id="slider2" min="1" max="5" step="1" value ="1" class="slider">
+                </p>
+                <p class="state">Brightness: <span id="sliderValue2"></span> &percnt;</p>
+            </div>
+            <div class="card">
+                <p class="card-title"> Fader 3</p>
+                <p class="switch">
+                    <input type="range" onchange="updateSliderPWM(this)" id="slider3" min="0" max="1" step="1" value ="1" class="slider">
+                </p>
+                <p class="state">Brightness: <span id="sliderValue3"></span> &percnt;</p>
+            </div>
+            <div class="card">
+                <p class="card-title"> Fader 3</p>
+                <p class="switch">
+                    <a href="/download">Download</a>
+                </p>
+                
+            </div>
+            
+            
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

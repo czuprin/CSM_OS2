@@ -1,0 +1,26 @@
+
+// Define Data
+var data = [{
+  x: xArray,
+  y: yArray,
+  mode:"lines"
+}];
+
+// Define Layout
+var layout = {
+    dragmode: 'pan' ,
+  xaxis: {range: [00, 20], title: "Zeit in ms"},
+  yaxis: {range: [400, 1000], title: "Lichtintensitat"},
+    
+  
+  title: "Lichtschwankungen"
+};
+
+// Display using Plotly
+Plotly.newPlot("myPlot", data, layout,{scrollZoom: true});
+
+</script>
+</div>
+</div>
+
+<div class="card-grid">

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+      
+      
+    <title>Czuprin CSM Einstellung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="/www/statisch/style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <h1>CSM V3.2</h1>
+       
+    </div>
+    <script>
+    
+    function read(eingabe) 
+{  
+    //if (s == 1){
+      //  var txtFile = new XMLHttpRequest();  
+    //txtFile.open("GET", "/datei.html", true);  }
+    //if (s == 2){
+        var txtFile = new XMLHttpRequest();  
+        txtFile.open("GET", eingabe, true); 
+      // }
+     
+     txtFile.onreadystatechange = function()   
+     {  
+          if (txtFile.readyState === 4)   
+          {  
+               // Makes sure the document is ready to parse.  
+               if (txtFile.status === 200)   
+               {  
+                    // Makes sure it's found the file.  
+                    document.getElementById("id1").innerHTML = txtFile.responseText;  
+               }  
+          }  
+     }  
+     txtFile.send(null)  
+}  
+    
+    function anzeigen(eingabe){
+      document.write(read(eingabe));
+      }
+      
+        
+      </script>
+      <div  class="content">
+        
+        <div class="card-grid">

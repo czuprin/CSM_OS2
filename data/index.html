@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>     
+    <title>Czuprin CSM Einstellung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <h1><label>CSM V3.3 - </label><label id = "anderbare_uberschrift">test</label> </h1> 
+    </div>
+    <ul>
+      <li><button  id="button1">Folie 1</button></li>
+      <li><button id="button2">Folie 2</button></li>
+      <li><button  id="button3">Folie 3</button></li>
+    </ul>
+      <div id="komplett" class="content">
+
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+<script>
+ 
+
+
+
+var test = 0;
+
+let anzahl_folie = 10;
+let anzahl_frame = 10;
+let anzahl_endobjekt = 10;
+let angezeigte_folie = 1;
+
+
+
+
+
+
+class c_menu_punkt{
+  constructor(nummer){
+    this._id = nummer;
+  }
+  get id(){
+    return this._id;
+  }
+}
+
+class c_menu{
+  constructor(nummer){
+    this._id = nummer;
+    this.punkt = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.punkt[i] = new c_menu_punkt(this._id + "_punkt" +i);}
+  }
+  get id(){
+    return this._id;
+  }
+  get id_label(){
+    return this._id + '_label';
+  }
+}
+
+class c_schalter{
+  constructor(nummer){
+    this._id = nummer;
+  }
+  get id(){
+    return this._id;
+  }
+  get id_label(){
+    return this._id + '_label';
+  }
+  get id_schalter(){
+    return this._id + '_schalter';
+  }
+}
+
+class c_knopf{
+  constructor(nummer){
+    this._id = nummer;
+    this._befehle = "";
+  }
+  get id(){
+    return this._id;
+  }
+  set befehle(eingabe){
+   this._befehle = eingabe
+  }
+  set befehl_hinzufugen(eingabe){
+    this._befehle = this._befehle + eingabe;
+  }
+  get befehle(){
+    return this._befehle
+  }
+}
+
+class c_label{
+  constructor(nummer){
+    this._id = nummer;
+  }
+  get id(){
+    return this._id;
+  }
+}
+
+class c_frame{
+  constructor(nummer){
+    this._id = nummer;
+    this.label = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.label[i] = new c_label(this._id + "_label" +i);}
+    this.knopf = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.knopf[i] = new c_knopf(this._id + "_knopf" +i);}
+
+      this.menu = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.menu[i] = new c_menu(this._id + "_menu" +i);}
+
+      this.schalter = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.schalter[i] = new c_schalter(this._id + "_schalter" +i);}
+}
+get id(){
+    return this._id;
+  }
+}
+
+class c_folie{
+  constructor(nummer){
+    this._id = nummer;
+    this.frame = [];
+    for (let i = 0; i<anzahl_frame;i++){
+  this.frame[i] = new c_frame(this._id + "_frame" +i);}
+  }
+  get id(){
+    return this._id;
+  }
+}
+let folie = [];
+for (let i = 0; i<anzahl_folie;i++){
+  folie[i] = new c_folie("folie" +i);}
+
+o_test = new c_folie("folie1");
+  
+
+ //console.log(folie[2].frame[1].id)
+
+ let hauptobjekt = document.getElementById("komplett");
+ hauptobjekt.style.display = "none";
+  let unterobjekt = document.createElement("folien");
+  unterobjekt.setAttribute('id', 'folien');
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  for (let a = 0; a<anzahl_folie;a++){
+  hauptobjekt = document.getElementById("folien");
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].id);
+  unterobjekt.setAttribute('class', 'card-grid');
+
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  for (let b = 0; b<anzahl_frame;b++){
+  hauptobjekt = document.getElementById(folie[a].id);
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].frame[b].id);
+  unterobjekt.setAttribute('class', 'card');
+  unterobjekt.style.display = "none";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  
+  for (let c = 0; c<anzahl_endobjekt;c++){
+
+    hauptobjekt = document.getElementById(folie[a].frame[b].id);
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].frame[b].label[c].id);
+  unterobjekt.innerHTML = a;
+  unterobjekt.style.display = "none";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  unterobjekt = document.createElement("button");
+  unterobjekt.setAttribute('id', folie[a].frame[b].knopf[c].id);
+  unterobjekt.innerHTML = "Click Me";
+  
+  unterobjekt.style.display = "none";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].frame[b].schalter[c].id);
+  unterobjekt.setAttribute('class', 'input-w');
+  unterobjekt.style.display = "none";
+  hauptobjekt.appendChild(unterobjekt);
+
+  hauptobjekt = unterobjekt
+  unterobjekt = document.createElement("input");
+  unterobjekt.setAttribute('type', 'checkbox');
+  unterobjekt.setAttribute('id', folie[a].frame[b].schalter[c].id_schalter);
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  unterobjekt = document.createElement("label");
+  unterobjekt.setAttribute('id', folie[a].frame[b].schalter[c].id_label);
+  unterobjekt.setAttribute('for', folie[a].frame[b].schalter[c].id_schalter);
+  unterobjekt.innerHTML = "schalter";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+ 
+
+
+
+
+
+
+  hauptobjekt = document.getElementById(folie[a].frame[b].id);
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].frame[b].menu[c].id);
+  unterobjekt.style.display = "none";
+  hauptobjekt.appendChild(unterobjekt);
+  
+hauptobjekt = unterobjekt;
+  unterobjekt = document.createElement("select");
+  unterobjekt.setAttribute('id', folie[a].frame[b].menu[c].id_label);
+  unterobjekt.innerHTML = "abc";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  hauptobjekt = unterobjekt;
+ for (let d = 0; d<anzahl_endobjekt;d++){
+  unterobjekt = document.createElement("option");
+  unterobjekt.setAttribute('value', d);
+  //console.log(folie[a].frame[b].menu[c].punkt[d].id);
+  unterobjekt.setAttribute('id', folie[a].frame[b].menu[c].punkt[d].id);
+  unterobjekt.innerHTML = "a";
+  unterobjekt.style.display = "none";
+  hauptobjekt.appendChild(unterobjekt);
+
+}
+
+
+
+
+  
+
+
+
+
+
+  }}}
+ 
+  document.getElementById("button1").addEventListener("click", function(){
+    websocket.send("offne_folie(1);");
+    folie_anzeigen(1);});
+  document.getElementById("button2").addEventListener("click", function(){
+    websocket.send("offne_folie(2);");folie_anzeigen(2);});
+  document.getElementById("button3").addEventListener("click", function(){
+    websocket.send("offne_folie(3);");folie_anzeigen(3);});
+
+  function folie_anzeigen(eingabe){
+    document.getElementById("anderbare_uberschrift").innerHTML = "Folie " + eingabe;
+    console.log(eingabe)
+  //for (let i = 0; i<anzahl_frame;i++){
+//document.getElementById(folie[angezeigte_folie].frame[1].menu[1].id).style.display = "block";
+//document.getElementById(folie[eingabe].frame[i].id).style.display = "block";
+  //}
+  document.getElementById(folie[angezeigte_folie].id).style.display = "none";
+  document.getElementById(folie[eingabe].id).style.display = "grid";
+  angezeigte_folie = eingabe;
+
+
+}
+document.getElementById("komplett").style.display = "block"
+  
+//document.getElementById(folie[2].frame[2].label[2].id).style.display = "block";
+//document.getElementById(folie[2].frame[2].id).style.display = "block";
+//document.getElementById(folie[2].frame[3].label[2].id).style.display = "block";
+//document.getElementById(folie[2].frame[3].id).style.display = "block";
+folie_anzeigen(1);
+//let json = "";
+function readTextFile(file)
+{ let ruckgabe;
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                ruckgabe = rawFile.responseText;
+                
+            }
+        }
+        
+    }
+    rawFile.send(null);
+    return ruckgabe;
+    
+}
+
+//fetch('https://czuprin.com/wp-content/uploads/2022/05/folie1.json', {
+//  credentials: 'omit'
+//})
+
+
+
+json1 = readTextFile("folie1.json");
+json2 = readTextFile("folie2.json");
+
+
+//console.log(json);
+
+//console.log(obj.frame[3]);
+function folie_aktualisieren (foliennummer, json_string){
+
+let obj = JSON.parse(json_string);
+for (let a = 0; a<anzahl_frame;a++){
+  if (typeof(obj.frame[a])  != "undefined"){
+    let a_id = obj.frame[a].id;
+    for (let b = 0; b<anzahl_endobjekt;b++){
+      if (typeof(obj.frame[a].label)  != "undefined"){
+      if (typeof(obj.frame[a].label[b])  != "undefined"){
+
+        let b_id = obj.frame[a].label[b].id;
+        let b_obj = document.getElementById(folie[foliennummer].frame[a_id].label[b_id].id)
+        b_obj.style.display = "block";
+        if (typeof(obj.frame[a].label[b].text)  != "undefined"){
+        b_obj.innerHTML = obj.frame[a].label[b].text;}
+        else {
+         b_obj.innerHTML = "";
+        }
+
+
+      }}}
+
+      for (let b = 0; b<anzahl_endobjekt;b++){
+      if (typeof(obj.frame[a].knopf)  != "undefined"){
+      if (typeof(obj.frame[a].knopf[b])  != "undefined"){
+
+        let b_id = obj.frame[a].knopf[b].id;
+        let b_obj = document.getElementById(folie[foliennummer].frame[a_id].knopf[b_id].id)
+        b_obj.style.display = "block";
+        if (typeof(obj.frame[a].knopf[b].text)  != "undefined"){
+        b_obj.innerHTML = obj.frame[a].knopf[b].text;
+        
+
+       
+
+        
+//console.log(folie[foliennummer].frame[a_id].menu[b_id].punkt[c])
+;//folie[foliennummer].frame[a_id].menu[b_id].punkt[c_id].id)
+      if (typeof(obj.frame[a].knopf[b].befehle)  != "undefined"){
+       
+          for (let c = 0; c<anzahl_endobjekt;c++){
+      if (typeof(obj.frame[a].knopf[b].befehle[c])  != "undefined" ){
+       
+        folie[foliennummer].frame[a_id].knopf[b_id].befehl_hinzufugen = obj.frame[a].knopf[b].befehle[c];
+        }
+      }
+      
+      
+    }}}}}
+
+
+      for (let b = 0; b<anzahl_endobjekt;b++){
+      if (typeof(obj.frame[a].schalter)  != "undefined"){
+      if (typeof(obj.frame[a].schalter[b])  != "undefined"){
+        
+        let b_id = obj.frame[a].schalter[b].id;
+        document.getElementById(folie[foliennummer].frame[a_id].schalter[b_id].id).style.display = "inline-block";
+
+        let b_obj = document.getElementById(folie[foliennummer].frame[a_id].schalter[b_id].id_label)
+        if (typeof(obj.frame[a].schalter[b].text)  != "undefined"){
+        b_obj.innerHTML = obj.frame[a].schalter[b].text;}
+        else {
+          b_obj.innerHTML = "";
+        }
+
+
+      }}}
+
+      for (let b = 0; b<anzahl_endobjekt;b++){
+      if (typeof(obj.frame[a].menu)  != "undefined"){
+      if (typeof(obj.frame[a].menu[b])  != "undefined"){
+        
+        let b_id = obj.frame[a].menu[b].id;
+        document.getElementById(folie[foliennummer].frame[a_id].menu[b_id].id).style.display = "block";
+       
+
+        for (let c = 0; c<anzahl_endobjekt;c++){
+
+//console.log(folie[foliennummer].frame[a_id].menu[b_id].punkt[c])
+let c_obj = document.getElementById(folie[foliennummer].frame[a_id].menu[b_id].punkt[c].id);//folie[foliennummer].frame[a_id].menu[b_id].punkt[c_id].id)
+      if (typeof(obj.frame[a].menu[b].punkte)  != "undefined"){
+      if (typeof(obj.frame[a].menu[b].punkte[c])  != "undefined" ){
+      
+       
+        c_obj.innerHTML = obj.frame[a].menu[b].punkte[c];
+        c_obj.style.display = "block";}
+        else{
+          c_obj.style.display = "none";
+          c_obj.innerHTML = "";
+        
+        }}}
+
+
+      }}}
+
+    
+    document.getElementById(folie[foliennummer].frame[a_id].id).style.display = "block";
+  }}}
+
+
+
+  function init_knopfsenden(){
+
+
+    for (let a = 0; a<anzahl_folie;a++){
+  for (let b = 0; b<anzahl_frame;b++){
+  for (let c = 0; c<anzahl_endobjekt;c++){
+
+    let hauptobjekt = document.getElementById(folie[a].frame[b].knopf[c].id);
+    hauptobjekt.addEventListener( 'click',function() { websocket.send(folie[a].frame[b].knopf[c].befehle)}, true);
+
+  }
+  }}
+
+  
+}
+
+//document.getElementById("folie1_frame3_knopf1").addEventListener = ("click", function(){console.log("a");});
+
+
+ 
+
+
+
+
+// expected output: 42
+
+//console.log(obj.result);
+// expected output: true
+
+function onMessage(event) {
+    console.log(event.data);
+    folie_aktualisieren(angezeigte_folie,event.data);
+}
+
+folie_aktualisieren(1,json1);
+folie_aktualisieren(2,json2);
+//folie_aktualisieren(3,json3);
+
+// Complete project details: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/
+
+
+var gateway = `ws://${window.location.hostname}/ws`;
+var websocket;
+window.addEventListener('load', onload);
+
+function onload(event) {initWebSocket();}
+  
+
+
+function getValues(){
+    websocket.send("getValues");
+}
+
+
+
+function initWebSocket() {
+    console.log('Trying to open a WebSocket connection…');
+    websocket = new WebSocket(gateway);
+    websocket.onopen = onOpen;
+    websocket.onclose = onClose;
+    websocket.onmessage = onMessage;
+}
+
+function onOpen(event) {
+    console.log('Connection opened');
+    init_knopfsenden();
+    getValues();
+}
+
+function onClose(event) {
+    console.log('Connection closed');
+    setTimeout(initWebSocket, 2000);
+}
+
+function updateSliderPWM(element) {
+    var sliderNumber = element.id.charAt(element.id.length-1);
+    var sliderValue = document.getElementById(element.id).value;
+    document.getElementById("sliderValue"+sliderNumber).innerHTML = sliderValue;
+    console.log(sliderValue);
+    websocket.send(sliderNumber+"s"+sliderValue.toString());
+}
+
+
+
+function sende_websocket(event){
+  websocket.send("eingabe.toString()");
+}
+
+</script>

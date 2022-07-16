@@ -1,0 +1,55 @@
+ let folie = [];
+for (let i = 0; i<10;i++){
+  folie[i] = "folie" + i;}
+  let frame = [];
+for (let i = 0; i<10;i++){
+  folie[i] = "frame" + i;}
+  let hauptobjekt = document.getElementById("komplett");
+  let unterobjekt = document.createElement("folien");
+  unterobjekt.setAttribute('id', 'folien');
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  for (let i = 0; i<10;i++){
+  hauptobjekt = document.getElementById("folien");
+  unterobjekt = document.createElement("folie");
+  unterobjekt.setAttribute('id', folie[i]);
+  unterobjekt.setAttribute('class', 'card-grid');
+  hauptobjekt.appendChild(unterobjekt);
+
+
+for (let a = 0; a<6;a++){
+  hauptobjekt = document.getElementById(folie[i]);
+  unterobjekt = document.createElement("frame");
+  unterobjekt.setAttribute('id', folie[i]+'_'+ frame[a] );
+  unterobjekt.setAttribute('class', 'card');
+  hauptobjekt.appendChild(unterobjekt);}
+
+
+
+
+
+  hauptobjekt = document.getElementById(folie[i] +'_'+ frame[1]);
+  unterobjekt = document.createElement("label");
+  unterobjekt.setAttribute('id', folie[i] + '_frame1_label1');
+  hauptobjekt.appendChild(unterobjekt);
+
+
+
+  hauptobjekt = document.getElementById(folie[i]+ "_frame1_label1");
+  unterobjekt = document.createTextNode("test");
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  hauptobjekt = document.getElementById(folie[i] + "_frame3");
+  unterobjekt = document.createElement("label");
+  unterobjekt.setAttribute('id', folie[i] + '_frame3_label1');
+  hauptobjekt.appendChild(unterobjekt);
+
+
+
+  hauptobjekt = document.getElementById(folie[i] + "_frame3_label1");
+  unterobjekt = document.createTextNode("test");
+  hauptobjekt.appendChild(unterobjekt);
+  
+}

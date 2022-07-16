@@ -1,0 +1,17 @@
+{
+	"frame": [
+		{"id": 3,
+			
+			"knopf": [
+				{"id": 2,
+					"text": "verandert",
+					"befehle": [
+						"mit_csm_verbinden_qr()"
+						
+					],
+					"gt": 2
+				}]
+		}
+	]
+	
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+      
+      
+    <title>Czuprin CSM Einstellung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+</head>
+
+<body>
+    <div class="topnav">
+        <h1>CSM V3.3</h1>
+       
+    </div>
+
+      <div id="komplett" class="content">
+        
+        <div class="card-grid" >
+          <div class='card'>
+            a
+            </div>
+            <div class='card' style="display:none;">
+              b
+              </div>
+              <div class='card'>
+                c
+                </div>
+                <div class='card'>
+                  d
+                  </div>
+                                                                      
+</div>
+
+<div id="id1"  class="content">
+        
+  <div class="card-grid">
+    <div class='card'>
+      1
+      </div>
+      <div class='card'>
+        2
+        </div>
+        <div class='card'>
+          3
+          </div>
+          <div class='card'>
+            4
+      
+                                                                
+          </div></div>
+</div>
+
+<button type="button" id="button1">1</button>
+<button type="button" id="button2">2</button>
+<button type="button" id="button3">3</button>
+
+
+<h2>Vertical Navigation Bar</h2>
+
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+</body>
+</html>
+<script>
+var test = 0;
+
+let anzahl_folie = 10;
+let anzahl_frame = 10;
+let anzahl_endobjekt = 10;
+let angezeigte_folie = 0;
+
+
+
+
+
+
+
+
+class c_menu{
+  constructor(nummer){
+    this._id = nummer;
+  }
+  get id(){
+    return this._id;
+  }
+}
+
+class c_schalter{
+  constructor(nummer){
+    this._id = nummer;
+  }
+  get id(){
+    return this._id;
+  }
+  get id_label(){
+    return this._id + 'label';
+  }
+  get id_schalter(){
+    return this._id + 'schalter';
+  }
+}
+
+class c_knopf{
+  constructor(nummer){
+    this._id = nummer;
+  }
+  get id(){
+    return this._id;
+  }
+}
+
+class c_label{
+  constructor(nummer){
+    this._id = nummer;
+  }
+  get id(){
+    return this._id;
+  }
+}
+
+class c_frame{
+  constructor(nummer){
+    this._id = nummer;
+    this.label = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.label[i] = new c_label(this._id + "_label" +i);}
+    this.knopf = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.knopf[i] = new c_knopf(this._id + "_knopf" +i);}
+
+      this.menu = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.menu[i] = new c_menu(this._id + "_knopf" +i);}
+
+      this.schalter = [];
+    for (let i = 0; i<anzahl_endobjekt;i++){
+      this.schalter[i] = new c_schalter(this._id + "_schalter" +i);}
+}
+get id(){
+    return this._id;
+  }
+}
+
+class c_folie{
+  constructor(nummer){
+    this._id = nummer;
+    this.frame = [];
+    for (let i = 0; i<anzahl_frame;i++){
+  this.frame[i] = new c_frame(this._id + "_frame" +i);}
+  }
+  get id(){
+    return this._id;
+  }
+}
+let folie = [];
+for (let i = 0; i<anzahl_folie;i++){
+  folie[i] = new c_folie("folie" +i);}
+
+o_test = new c_folie("folie1");
+  
+
+ //console.log(folie[2].frame[1].id)
+
+ let hauptobjekt = document.getElementById("komplett");
+  let unterobjekt = document.createElement("folien");
+  unterobjekt.setAttribute('id', 'folien');
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  for (let a = 0; a<anzahl_folie;a++){
+  hauptobjekt = document.getElementById("folien");
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].id);
+  unterobjekt.setAttribute('class', 'card-grid');
+ 
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  for (let b = 0; b<anzahl_frame;b++){
+  hauptobjekt = document.getElementById(folie[a].id);
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].frame[b].id);
+  unterobjekt.setAttribute('class', 'card');
+  unterobjekt.style.display = "none";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  
+  for (let c = 0; c<anzahl_endobjekt;c++){
+
+    hauptobjekt = document.getElementById(folie[a].frame[b].id);
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].frame[b].label[c].id);
+  unterobjekt.innerHTML = a;
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  unterobjekt = document.createElement("button");
+  unterobjekt.setAttribute('id', folie[a].frame[b].knopf[c].id);
+  unterobjekt.innerHTML = "Click Me";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+  unterobjekt = document.createElement("div");
+  unterobjekt.setAttribute('id', folie[a].frame[b].schalter[c].id);
+  hauptobjekt.appendChild(unterobjekt);
+
+  hauptobjekt = unterobjekt
+  unterobjekt = document.createElement("input");
+  unterobjekt.setAttribute('type', 'checkbox');
+  unterobjekt.setAttribute('id', folie[a].frame[b].schalter[c].id_schalter);
+  hauptobjekt.appendChild(unterobjekt);
+
+  unterobjekt = document.createElement("label");
+  unterobjekt.setAttribute('id', folie[a].frame[b].schalter[c].id_label);
+  unterobjekt.innerHTML = "schalter";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+
+
+hauptobjekt = document.getElementById(folie[a].frame[b].id);
+  unterobjekt = document.createElement("select");
+  unterobjekt.setAttribute('id', folie[a].frame[b].menu[c].id);
+  hauptobjekt.appendChild(unterobjekt);
+
+ hauptobjekt = unterobjekt;
+  unterobjekt = document.createElement("option");
+  unterobjekt.setAttribute('value', 1);
+  unterobjekt.innerHTML = "a";
+  hauptobjekt.appendChild(unterobjekt);
+
+
+
+
+  
+
+
+
+
+
+  }}}
+
+  document.getElementById("button1").addEventListener("click", function(){folie_anzeigen(1);});
+  document.getElementById("button2").addEventListener("click", function(){folie_anzeigen(2);});
+  document.getElementById("button3").addEventListener("click", function(){folie_anzeigen(3);});
+
+  function folie_anzeigen(eingabe){
+
+    console.log(eingabe)
+  for (let i = 0; i<anzahl_frame;i++){
+document.getElementById(folie[angezeigte_folie].frame[i].id).style.display = "none";
+document.getElementById(folie[eingabe].frame[i].id).style.display = "block";
+  }
+  angezeigte_folie = eingabe;
+
+
+}
+
+  
+
+//folie_anzeigen(2);
+
+
+
+
+</script>

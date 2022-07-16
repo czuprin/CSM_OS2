@@ -1,0 +1,165 @@
+{
+	"frame": [
+		{
+			"id": 1,
+			"y_pos": 70,
+			"y_lang": 0,
+			"seite": 1,
+			
+			"label": [
+				{
+					"id": 1,
+					"x_pos": 10,
+					"y_pos": 0,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "WHITE",
+					"ft": "BLACK",
+					"text": "abc "
+				},{
+					"id": 2,
+					"x_pos": 10,
+					"y_pos": 50,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "WHITE",
+					"ft": "BLACK",
+					"text": " "
+				},{
+					"id": 3,
+					"x_pos": 10,
+					"y_pos": 100,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "WHITE",
+					"ft": "BLACK",
+					"text": " "
+				},{
+					"id": 4,
+					"x_pos": 10,
+					"y_pos": 150,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "WHITE",
+					"ft": "BLACK",
+					"text": " "
+				},{
+					"id": 5,
+					"x_pos": 10,
+					"y_pos": 200,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "WHITE",
+					"ft": "BLACK",
+					"text": " "
+				},{
+					"id": 6,
+					"x_pos": 10,
+					"y_pos": 250,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "WHITE",
+					"ft": "BLACK",
+					"text": " "
+				},{
+					"id": 7,
+					"x_pos": 10,
+					"y_pos": 300,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "WHITE",
+					"ft": "BLACK",
+					"text": " "
+				}
+			]
+		},{
+			"id": 2,
+			"y_pos": 70,
+			"y_lang": 0,
+			"seite": 1,
+			
+			"label": [
+				{
+					"id": 1,
+					"x_pos": 155,
+					"y_pos": 0,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "BLACK",
+					"ft": "WHITE",
+					"text": " "
+				},{
+					"id": 2,
+					"x_pos": 155,
+					"y_pos": 50,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "BLACK",
+					"ft": "WHITE",
+					"text": " "
+				},{
+					"id": 3,
+					"x_pos": 155,
+					"y_pos": 100,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "BLACK",
+					"ft": "WHITE",
+					"text": " "
+				},{
+					"id": 4,
+					"x_pos": 155,
+					"y_pos": 150,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "BLACK",
+					"ft": "WHITE",
+					"text": " "
+				},{
+					"id": 5,
+					"x_pos": 155,
+					"y_pos": 200,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "BLACK",
+					"ft": "WHITE",
+					"text": " "
+				},{
+					"id": 6,
+					"x_pos": 155,
+					"y_pos": 250,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "BLACK",
+					"ft": "WHITE",
+					"text": " "
+				},{
+					"id": 7,
+					"x_pos": 155,
+					"y_pos": 300,
+					"x_lang": 145,
+					"y_lang": 50,
+					"fu": "WHITE",
+					"fh": "BLACK",
+					"ft": "WHITE",
+					"text": " "
+				}
+			]
+		}
+		
+	]
+	
+}
